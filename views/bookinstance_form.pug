@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  h1=title
+
+  form(action="" method="post")
+    .form-group
+      label(for='book') Book:
+      select#book.form-control(type='select' name='book' placeholder='Select book' required=true)
+        for book in books
+          if book_instance
+            //- GET form, where book_instance.book is an object(populate), and POST, where a ObjectId
+            option(value=book._id 
+              selected=(
+                (
+                  book._id.toString()==book_instance.book._id
+                  || book._id.toString()==book_instance.book
+                )? 'selected' : false)
+            ) !{book.title}
+          else
+            option(value=book._id) #{book.title}
+    .form-group
+      label(for='imprint') Imprint:
+      input#imprint.form-control(
+        type="text" name="imprint" placeholder='Publisher and date information' required='true'
+        value=(undefined===book_instance ? '' : book_instance.imprint)
+      )
+    .form-group
+      label(for='due_back') Date when book available:
+      input#due_back.form-control(
+        type="date" name="due_back" placeholder='dd/mm/yyyy' required='true'
+        value=(!book_instance) ? '' : (!book_instance.due_back) ? '' : book_instance.due_back.toISOString().split('T')[0]
+      )
+    .form-group
+      label(for='status') Status:
+      select#status.form-control(
+        type='select' name='status' placeholder='Select status' required=true
+      )
+        for element in ['Available', 'Maintenance', 'Loaned', 'Reserved']
+          if book_instance 
+            option(value=element selected=(book_instance.status==element ? 'selected' : false)) #{element}
+          else 
+            option(value=element) #{element}
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li.text-danger!= error.msg
