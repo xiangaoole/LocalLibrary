@@ -49,10 +49,7 @@ exports.bookinstance_create_get = (req, res, next) => {
 
 // Display BookInstance create on POST.
 exports.bookinstance_create_post = [
-  body('imprint', 'Imprint must not be empty.')
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
+  body('imprint', 'Imprint must not be empty.').trim().isLength({ min: 1 }),
   body('due_back').optional({ checkFalsy: true }).isISO8601().toDate(),
   (req, res, next) => {
     const errors = validationResult(req);
@@ -107,10 +104,7 @@ exports.bookinstance_update_get = (req, res, next) => {
 // Display BookInstance update on POST
 exports.bookinstance_update_post = [
   // Validate and sanitize request field.
-  body('imprint', 'Imprint must not be empty.')
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
+  body('imprint', 'Imprint must not be empty.').trim().isLength({ min: 1 }),
   body('due_back').optional({ checkFalsy: true }).isISO8601().toDate(),
 
   // Process request

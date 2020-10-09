@@ -1,14 +1,14 @@
 extends layout
 
 block content
-  h1!= title
+  h1= title
 
   form(action="" method="post")
     .form-group
       label(for='title') Title: 
       input#title.form-control(
         type='text' name='title' placeholder='Name of book'
-        required='true' value!=(undefined===book ? '' : book.title)
+        required='true' value=(undefined===book ? '' : book.title)
       )
     .form-group
       label(for='author') Author:
@@ -30,15 +30,15 @@ block content
                   author._id.toString()==book.author._id
                   || author._id.toString()==book.author
                 ) ? 'selected' : false)
-            ) !{author.name}
+            ) #{author.name}
           else
-            option(value=author._id) !{author.name}
+            option(value=author._id) #{author.name}
     .form-group
       label(for='summary') Summary: 
       textarea#summary.form-control(
         type='textarea' name='summary' placeholder='Summary'
         rows='3' required='true'
-      ) !{undefined===book ? '' : book.summary}
+      ) #{undefined===book ? '' : book.summary}
     .form-group
       label(for='isbn') ISBN: 
       input#isbn.form-control(
@@ -60,6 +60,6 @@ block content
   if errors
     ul(style='color: red;')
       for error in errors
-        li!= error.msg
+        li= error.msg
 
 

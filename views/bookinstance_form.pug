@@ -16,7 +16,7 @@ block content
                   book._id.toString()==book_instance.book._id
                   || book._id.toString()==book_instance.book
                 )? 'selected' : false)
-            ) !{book.title}
+            ) #{book.title}
           else
             option(value=book._id) #{book.title}
     .form-group

@@ -56,15 +56,13 @@ exports.author_create_post = [
     .isLength({ max: 100, min: 1 })
     .withMessage('First name length must be in the range of 1~100')
     .isAlphanumeric()
-    .withMessage('First name has non-alphanumeric characters.')
-    .escape(),
+    .withMessage('First name has non-alphanumeric characters.'),
   body('family_name')
     .trim()
     .isLength({ max: 100, min: 1 })
     .withMessage('Family name length must be in the range of 1~100')
     .isAlphanumeric()
-    .withMessage('Family name has non-alphanumeric characters.')
-    .escape(),
+    .withMessage('Family name has non-alphanumeric characters.'),
   body('date_of_birth').optional({ checkFalsy: true }).isISO8601().toDate(),
   body('date_of_death').optional({ checkFalsy: true }).isISO8601().toDate(),
   (req, res, next) => {
@@ -163,15 +161,13 @@ exports.author_update_post = [
     .isLength({ max: 100, min: 1 })
     .withMessage('First name length must be in the range of 1~100')
     .isAlphanumeric()
-    .withMessage('First name has non-alphanumeric characters.')
-    .escape(),
+    .withMessage('First name has non-alphanumeric characters.'),
   body('family_name')
     .trim()
     .isLength({ max: 100, min: 1 })
     .withMessage('Family name length must be in the range of 1~100')
     .isAlphanumeric()
-    .withMessage('Family name has non-alphanumeric characters.')
-    .escape(),
+    .withMessage('Family name has non-alphanumeric characters.'),
   body('date_of_birth').optional({ checkFalsy: true }).isISO8601().toDate(),
   body('date_of_death').optional({ checkFalsy: true }).isISO8601().toDate(),
 

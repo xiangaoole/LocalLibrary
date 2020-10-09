@@ -12,8 +12,8 @@ block content
       dl
         each book in genre_books
           dt 
-            a(href=book.url) !{book.title}
-          dd !{book.summary}
+            a(href=book.url) #{book.title}
+          dd #{book.summary}
   else
     p.text-warning Do you really want to delete this genre?
 

@@ -39,10 +39,7 @@ exports.genre_create_get = (req, res) =>
 // Display Genre create on POST.
 exports.genre_create_post = [
   // Validate and sanitize request body fields
-  body('name', 'Genre name at least 3 characters')
-    .trim()
-    .isLength({ min: 3 })
-    .escape(),
+  body('name', 'Genre name at least 3 characters').trim().isLength({ min: 3 }),
 
   // process request
   (req, res, next) => {
@@ -85,10 +82,7 @@ exports.genre_update_get = (req, res, next) => {
 // Display Genre update on POST
 exports.genre_update_post = [
   // Validate and sanitize request body fields
-  body('name', 'Genre name at least 3 characters')
-    .trim()
-    .isLength({ min: 3 })
-    .escape(),
+  body('name', 'Genre name at least 3 characters').trim().isLength({ min: 3 }),
 
   // process request
   (req, res, next) => {

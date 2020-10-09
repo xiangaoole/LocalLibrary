@@ -15,8 +15,8 @@ const catalogRouter = require('./routes/catalog');
 const app = express();
 
 // Set up mongoose connection
-const dev_db_url = 
-  'mongodb+srv://your_user:you_password@cluster0.ersjg.azure.mongodb.net/local_library?retryWrites=true&w=majority';
+const dev_db_url =
+  'mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true';
 const mongoDB = process.env.MONGODB_URI_LOCAL_LIBRARY || dev_db_url;
 debug(mongoDB);
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
